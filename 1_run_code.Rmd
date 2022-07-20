@@ -19,23 +19,23 @@ git commit -am 'date' git push origin +master
     objects.
 
 -   IntegrateData is a step in the integration, integrating two objects
-    by anchor(matched biological state ('anchors')) cells.  
+    by anchor(matched biological state ('anchors')) cells.
 
 -   The detail you could find in the paper, here.
 
 -   You should only use merge for technical replicates, and in theory
-    for a group of samples with a low batch effect.  
+    for a group of samples with a low batch effect.
 
 -   Integration in Seurat (and related) was developed because there
-    tends to be a relatively strong batch in the manifolds.  
+    tends to be a relatively strong batch in the manifolds.
 
 -   By this I mean that even if two cell populations are the same
-    between two samples,  
+    between two samples,
 
--   they will appear as two partially or fully separate clusters.  
+-   they will appear as two partially or fully separate clusters.
 
 -   Integration tries to "smooth out" the differences in batches so that
-    cells that are likely similar will cluster together.  
+    cells that are likely similar will cluster together.
 
 -   As with anything single-cell related I would suggest exploring and
     validating the results from both merging and integration  
@@ -71,8 +71,8 @@ knitr::opts_chunk$set(
 ```
 
 ## path & package
-
-```{r pressure, echo=TRUE}
+```{r}
+in_fod_dir = ''
 q_dir = '/home/starjjbang/project/1_prof_kim_lab_deg/1_single_cell_project/'
 fig_dir = paste0(q_dir, 'plot/7_0725_fig/',in_fod_dir)
 rds_dir = paste0(q_dir, 'rds/4_220725/',in_fod_dir)
@@ -83,6 +83,40 @@ system(paste0('mkdir ',ref_dir))
 source('/home/starjjbang/project/1_prof_kim_lab_deg/1_single_cell_project/code/single_function_ver02_0412.R')
 ```
 
-```{r, eval=FALSE}
-plot(cars)
+## setting
+```{r}
+#2,3/1,2/1,2,3
+#merge data 2/3 -- complete
+single_cell_run('1_23_combi/',
+                c(sharm_02,T2_nega_01,T2_nega_02,T2_posi_02,T2_posi_03),
+                c("sharm_01","sharm_02","T2_nega_01","T2_nega_02","T2_posi_02","T2_posi_03"))
+
+#merge data 1/2/3-- complete
+rm(list = ls())
+in_fod_dir = '1_123_combi/'
+single_cell_run(c(sharm_02,T2_nega_01,T2_nega_02,T2_posi_01,T2_posi_02,T2_posi_03), 
+                c("sharm_01", "sharm_02","T2_nega_01","T2_nega_02","T2_posi_01","T2_posi_02","T2_posi_03"))
+
+#merge data 1/2
+rm(list = ls())
+in_fod_dir = '1_12_combi/'
+single_cell_run(c(sharm_02,T2_nega_01,T2_nega_02,T2_posi_01,T2_posi_02), 
+                c("sharm_01", "sharm_02","T2_nega_01","T2_nega_02","T2_posi_01","T2_posi_02"))
+
+#merge data 1/3
+in_fod_dir = '1_13_combi/'
+single_cell_run(c(sharm_02,T2_nega_01,T2_nega_02,T2_posi_01,T2_posi_03), 
+                c("sharm_01", "sharm_02","T2_nega_01","T2_nega_02","T2_posi_01","T2_posi_03"))
+```
+
+## data loading
+```{r}
+sharm_01 <- CreateSeuratObject(counts = Read10X(data.dir = paste0(q_dir, '1_raw_data/T_dat/sharm_1')),project = "sharm")
+sharm_02 <- CreateSeuratObject(counts = Read10X(data.dir = paste0(q_dir, '1_raw_data/T_dat/sharm_2')),project = "sharm")
+T2_nega_01 <- CreateSeuratObject(counts = Read10X(data.dir = paste0(q_dir, '1_raw_data/T_dat/T2_nega_no_1')),project = "T2_nega")
+T2_nega_02 <- CreateSeuratObject(counts = Read10X(data.dir = paste0(q_dir, '1_raw_data/T_dat/T2_nega_no_2')),project = "T2_nega")
+T2_posi_01 <- CreateSeuratObject(counts = Read10X(data.dir = paste0(q_dir, '1_raw_data/T_dat/T2_posi_no_1')),project = "T2_posi")
+T2_posi_02 <- CreateSeuratObject(counts = Read10X(data.dir = paste0(q_dir, '1_raw_data/T_dat/T2_posi_no_2')),project = "T2_posi")
+T2_posi_02 <- CreateSeuratObject(counts = Read10X(data.dir = paste0(q_dir, '1_raw_data/T_dat/T2_posi_no_2')),project = "T2_posi")
+T2_posi_03 <- CreateSeuratObject(counts = Read10X(data.dir = paste0(q_dir, '1_raw_data/T_dat/T2_posi_no_3')),project = "T2_posi")
 ```
