@@ -45,24 +45,16 @@ Switch to "SCT" assay and continue with the DE analysis.
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## GitHub Documents
-
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
-
-## Including Code
-
-You can include R code in the document as follows:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+## path & package
+```{r pressure, echo=TRUE}
+q_dir = '/home/starjjbang/project/1_prof_kim_lab_deg/1_single_cell_project/'
+fig_dir = paste0(q_dir, 'plot/7_0725_fig/',in_fod_dir)
+rds_dir = paste0(q_dir, 'rds/4_220725/',in_fod_dir)
+ref_dir = paste0(q_dir, 'result/5_0725_analysis/',in_fod_dir)
+system(paste0('mkdir ',fig_dir))
+system(paste0('mkdir ',rds_dir))
+system(paste0('mkdir ',ref_dir))
+source('/home/starjjbang/project/1_prof_kim_lab_deg/1_single_cell_project/code/single_function_ver02_0412.R')
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
