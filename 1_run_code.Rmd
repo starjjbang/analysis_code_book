@@ -31,13 +31,13 @@ UMAP, clustering, etc.
 1. Create all seurat objects. 
 2. Perform the quality-check and filtering for each one of them. 
 3. Calculate percent.mito. 
-Normalize each dataset separately with SCTransform. Regress out percent.mito if desired. 
-Calculate cell cycle scores. 
-Prepare for integration with SelectIntegrationFeatures() and PrepSCTIntegration(). 
-Integrate datasets. 
-ScaleData, regressing out cell cycle score if desired 
-Run PCA, UMAP, FindClusters, FindNeighbors on integrated assay. 
-Switch to "SCT" assay and continue with the DE analysis. 
+4. Normalize each dataset separately with SCTransform. Regress out percent.mito if desired. 
+5. Calculate cell cycle scores. 
+6. Prepare for integration with SelectIntegrationFeatures() and PrepSCTIntegration(). 
+7. Integrate datasets. 
+8. ScaleData, regressing out cell cycle score if desired 
+9. Run PCA, UMAP, FindClusters, FindNeighbors on integrated assay. 
+10. Switch to "SCT" assay and continue with the DE analysis. 
 
 ##merge() conserved the original raw data of the objects; and IntegrateData() normalized the raw data? 
 
@@ -57,12 +57,6 @@ system(paste0('mkdir ',ref_dir))
 source('/home/starjjbang/project/1_prof_kim_lab_deg/1_single_cell_project/code/single_function_ver02_0412.R')
 ```
 
-```{r}
+```{r, eval=FALSE}
 plot(cars)
-```
-
-```
-function test() {
-  console.log("notice the blank line before this function?");
-}
 ```
