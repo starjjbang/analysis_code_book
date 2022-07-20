@@ -2,44 +2,44 @@
 title: "Untitled"
 output: github_document
 ---
-#git commit -am 'date'
-#git push origin +master
+git commit -am 'date'
+<!-- #git push origin +master -->
 
-# https://github.com/satijalab/seurat/issues/1787
-# - merge just concatenates the counts or data table from two object together. 
-# If either object has unique genes, it will be added in the merged objects.
-# 
-# - IntegrateData is a step in the integration, integrating two objects by anchor(matched biological state ('anchors')) cells. 
-# - The detail you could find in the paper, here.
-# 
-# - You should only use merge for technical replicates, and in theory for a group of samples with a low batch effect. 
-# 
-# - Integration in Seurat (and related) was developed because there tends to be a relatively strong batch in the manifolds. 
-# - By this I mean that even if two cell populations are the same between two samples, 
-# - they will appear as two partially or fully separate clusters. 
-# - Integration tries to "smooth out" the differences in batches so that cells that are likely similar will cluster together. 
-# - As with anything single-cell related I would suggest exploring and validating the results from both merging and integration 
-# to get a better feel for your data.
-# 
-# Merge samples into one Seurat object
-# Make QC plots, split by sample. Merged object allows to easily examine different features on one plot
-# Filter cells and genes, depending on batch structure (see below).
-# Split merged object into samples again
-# Integrate
-# UMAP, clustering, etc.
+<!-- # https://github.com/satijalab/seurat/issues/1787 -->
+<!-- # - merge just concatenates the counts or data table from two object together.  -->
+<!-- # If either object has unique genes, it will be added in the merged objects. -->
+<!-- #  -->
+<!-- # - IntegrateData is a step in the integration, integrating two objects by anchor(matched biological state ('anchors')) cells.  -->
+<!-- # - The detail you could find in the paper, here. -->
+<!-- #  -->
+<!-- # - You should only use merge for technical replicates, and in theory for a group of samples with a low batch effect.  -->
+<!-- #  -->
+<!-- # - Integration in Seurat (and related) was developed because there tends to be a relatively strong batch in the manifolds.  -->
+<!-- # - By this I mean that even if two cell populations are the same between two samples,  -->
+<!-- # - they will appear as two partially or fully separate clusters.  -->
+<!-- # - Integration tries to "smooth out" the differences in batches so that cells that are likely similar will cluster together.  -->
+<!-- # - As with anything single-cell related I would suggest exploring and validating the results from both merging and integration  -->
+<!-- # to get a better feel for your data. -->
+<!-- #  -->
+<!-- # Merge samples into one Seurat object -->
+<!-- # Make QC plots, split by sample. Merged object allows to easily examine different features on one plot -->
+<!-- # Filter cells and genes, depending on batch structure (see below). -->
+<!-- # Split merged object into samples again -->
+<!-- # Integrate -->
+<!-- # UMAP, clustering, etc. -->
 
-# 1. Create all seurat objects.
-# 2. Perform the quality-check and filtering for each one of them.
-# 3. Calculate percent.mito.
-# Normalize each dataset separately with SCTransform. Regress out percent.mito if desired.
-# Calculate cell cycle scores.
-# Prepare for integration with SelectIntegrationFeatures() and PrepSCTIntegration().
-# Integrate datasets.
-# ScaleData, regressing out cell cycle score if desired
-# Run PCA, UMAP, FindClusters, FindNeighbors on integrated assay.
-# Switch to "SCT" assay and continue with the DE analysis.
+<!-- # 1. Create all seurat objects. -->
+<!-- # 2. Perform the quality-check and filtering for each one of them. -->
+<!-- # 3. Calculate percent.mito. -->
+<!-- # Normalize each dataset separately with SCTransform. Regress out percent.mito if desired. -->
+<!-- # Calculate cell cycle scores. -->
+<!-- # Prepare for integration with SelectIntegrationFeatures() and PrepSCTIntegration(). -->
+<!-- # Integrate datasets. -->
+<!-- # ScaleData, regressing out cell cycle score if desired -->
+<!-- # Run PCA, UMAP, FindClusters, FindNeighbors on integrated assay. -->
+<!-- # Switch to "SCT" assay and continue with the DE analysis. -->
 
-#merge() conserved the original raw data of the objects; and IntegrateData() normalized the raw data?
+<!-- #merge() conserved the original raw data of the objects; and IntegrateData() normalized the raw data? -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
