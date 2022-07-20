@@ -61,3 +61,8 @@ source('/home/starjjbang/project/1_prof_kim_lab_deg/1_single_cell_project/code/s
 plot(cars)
 ```
 
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
