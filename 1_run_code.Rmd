@@ -57,4 +57,7 @@ system(paste0('mkdir ',ref_dir))
 source('/home/starjjbang/project/1_prof_kim_lab_deg/1_single_cell_project/code/single_function_ver02_0412.R')
 ```
 
+```{r}
+plot(cars)
+```
 
